@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>舒元波 | 个人简历</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #2c3e50;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 960px;
+    margin: 30px auto;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    display: flex;
+    min-height: 1200px;
+  }
+
+  /* 侧边栏 */
+  .sidebar {
+    width: 320px;
+    background: linear-gradient(160deg, #1a365d 0%, #2c5282 100%);
+    color: #fff;
+    padding: 40px 30px;
+    flex-shrink: 0;
+  }
+  .avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 600;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.3);
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .name {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 3px;
+  }
+  .title {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+  .side-section { margin-bottom: 28px; }
+  .side-section h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #ffd700;
+  }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    word-break: break-all;
+  }
+  .contact-item .icon { margin-right: 10px; flex-shrink: 0; opacity: 0.8; }
+  .skill-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin: 0 6px 8px 0;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .edu-item { margin-bottom: 16px; font-size: 13px; }
+  .edu-item .school { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+  .edu-item .degree { color: rgba(255,255,255,0.85); }
+  .edu-item .time { color: rgba(255,255,255,0.6); font-size: 12px; }
+  .cert-item {
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 6px;
+    padding-left: 18px;
+    position: relative;
+  }
+  .cert-item::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+  }
+
+  /* 主内容区 */
+  .main {
+    flex: 1;
+    padding: 45px 40px;
+  }
+  .main-section { margin-bottom: 32px; }
+  .main-section h2 {
+    font-size: 18px;
+    color: #1a365d;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+  }
+  .main-section h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: #2c5282;
+    margin-right: 10px;
+    border-radius: 2px;
+  }
+  .summary {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.8;
+    text-align: justify;
+  }
+  .exp-item {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 24px;
+    border-left: 2px solid #e2e8f0;
+  }
+  .exp-item::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2c5282;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #2c5282;
+  }
+  .exp-item .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .exp-item .exp-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  .exp-item .exp-time {
+    font-size: 12px;
+    color: #718096;
+  }
+  .exp-item .exp-role {
+    font-size: 13px;
+    color: #2c5282;
+    margin-bottom: 8px;
+  }
+  .exp-item .exp-desc {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.75;
+  }
+  .exp-item .exp-desc ul {
+    padding-left: 18px;
+    margin-top: 4px;
+  }
+  .exp-item .exp-desc li { margin-bottom: 4px; }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .page { flex-direction: column; margin: 0; box-shadow: none; }
+    .sidebar { width: 100%; padding: 30px 20px; }
+    .main { padding: 30px 20px; }
+  }
+
+  /* 打印优化 */
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="avatar">
+      <!-- 想放照片？把下面这行换成：<img src="photo.jpg" alt="头像"> -->
+      舒
+    </div>
+    <div class="name">舒元波</div>
+    <div class="title">产品经理 · 教育数字化方向</div>
+
+    <div class="side-section">
+      <h3>联系方式</h3>
+      <div class="contact-item">
+        <span class="icon">✉</span>
+        <span>767094739@qq.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">☏</span>
+        <span>138-XXXX-XXXX</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">⌂</span>
+        <span>四川 · 成都</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">⚡</span>
+        <span>github.com/leisao</span>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h3>专业技能</h3>
+      <div>
+        <span class="skill-tag">产品规划</span>
+        <span class="skill-tag">需求分析</span>
+        <span class="skill-tag">Axure 原型</span>
+        <span class="skill-tag">UI/UX 设计</span>
+        <span class="skill-tag">高保真原型</span>
+        <span class="skill-tag">数据可视化大屏</span>
+        <span class="skill-tag">微信小程序</span>
+        <span class="skill-tag">HTML5 / CSS3</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">响应式开发</span>
+        <span class="skill-tag">产教融合</span>
+        <span class="skill-tag">双高建设</span>
+        <span class="skill-tag">系统测试</span>
+        <span class="skill-tag">驻场实施</span>
+        <span class="skill-tag">用户培训</span>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h3>教育背景</h3>
+      <div class="edu-item">
+        <div class="school">成都理工大学</div>
+        <div class="degree">计算机科学与技术 · 本科</div>
+        <div class="time">2024.03 - 2026.07</div>
+      </div>
+      <div class="edu-item">
+        <div class="school">成都纺织高等专科学校</div>
+        <div class="degree">汽车电子技术 · 大专</div>
+        <div class="time">2010.09 - 2013.07</div>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <h3>证书</h3>
+      <div class="cert-item">系统集成项目管理工程师</div>
+    </div>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main">
+
+    <section class="main-section">
+      <h2>个人简介</h2>
+      <p class="summary">
+        11 年互联网与教育科技行业经验，具备从网页设计到产品经理的完整职业路径，既懂设计又懂产品还能写前端代码。现专注职业教育数字化领域，独立统筹产品从 0 到 1 的全生命周期，覆盖产品规划、原型设计、UI 视觉、研发对接、测试验收、驻场实施与用户培训全链路。已成功服务 10+ 中高职院校，主导双高管理、产教融合、三名工程等核心产品落地。自学能力强，善于沟通协调，能快速适应新业务场景。
+      </p>
+    </section>
+
+    <section class="main-section">
+      <h2>工作经历</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">华夏博康教育科技有限公司</span>
+          <span class="exp-time">2019.06 - 至今</span>
+        </div>
+        <div class="exp-role">产品经理 · 学校/学历教育</div>
+        <div class="exp-desc">
+          <ul>
+            <li>独立统筹公司核心产品从 0 到 1 的全生命周期管理，覆盖产品规划、设计、研发对接、上线落地全链路，把控项目节奏与交付质量。</li>
+            <li>主导落地双高管理系统、产教融合系统、三名工程系统等多款核心产品，成功服务 10+ 中高职院校，实现产品从创意到业务规模化落地的完整闭环。</li>
+            <li>独立完成产品与设计一体化落地，输出全流程高保真原型图与交互说明文档，同步负责 UI/UX 视觉设计与用户体验优化，设计内容涵盖在线网站、微信小程序、内部管理系统、数据可视化大屏。</li>
+            <li>主导团队需求对接、技术评审与落地跟进，解决开发过程中的产品与设计适配问题，保障产品按规划高质量上线。</li>
+            <li>承担产品全流程系统测试，实现上线前核心业务流程零故障；独立输出操作手册并开展专项培训，确保用户快速上手。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">成都泉源堂大药房连锁股份有限公司</span>
+          <span class="exp-time">2016.06 - 2019.05</span>
+        </div>
+        <div class="exp-role">网页设计师 · 生物/制药</div>
+        <div class="exp-desc">
+          <ul>
+            <li>精通 PS、AI，具备扎实的设计基础与排版审美，根据产品需求完成 Web、APP 设计。</li>
+            <li>熟练使用 Axure、Mockplus 进行原型设计，负责宣传册、展会、H5、微信商城、企业网站、内部期刊杂志、后台管理界面等设计工作。</li>
+            <li>精通 DIV+CSS 布局，理解 Web 标准与浏览器兼容性，能编写符合 W3C 标准的前端页面；熟练使用 HTML5、CSS3、JavaScript，掌握 PC 端与移动端响应式开发。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">北京金刚汇信息科技有限公司</span>
+          <span class="exp-time">2015.08 - 2016.06</span>
+        </div>
+        <div class="exp-role">网页设计 · 产业互联网平台</div>
+        <div class="exp-desc">
+          <ul>
+            <li>使用 Photoshop、Dreamweaver 完成网站页面制作与美工设计。</li>
+            <li>熟悉 JavaScript、jQuery 及 HTML5，遵循 W3C 标准，能解决主流浏览器 CSS 兼容性问题。</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="main-section">
+      <h2>核心项目</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">职业院校数字化建设系列项目</span>
+          <span class="exp-time">2024.01 - 至今</span>
+        </div>
+        <div class="exp-role">产品经理 / 驻场实施</div>
+        <div class="exp-desc">
+          <ul>
+            <li>覆盖职业院校诊改、双高建设、产教融合、目标绩效管理、专业群建设等多类项目。</li>
+            <li>对接院校梳理建设需求，完成产品原型、页面设计及方案迭代。</li>
+            <li>跟进研发、测试全流程；驻场协助项目验收及相关材料填报，撰写操作手册并开展教师培训，后续持续跟踪优化。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">成都航空职业技术大学 · 数字化平台</span>
+          <span class="exp-time">2025 - 2026</span>
+        </div>
+        <div class="exp-role">产品经理</div>
+        <div class="exp-desc">
+          <ul>
+            <li>前期深入学校各部门调研业务流程，梳理本科层次职业大学的管理与教学需求。</li>
+            <li>独立完成产品原型与页面设计，与开发团队对接评审，跟进落地实现。</li>
+            <li>持续与校方沟通调整方案，主导上线前测试、验收材料整理及教师操作培训。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">眉山职业技术学院 · 教学质量督导系统</span>
+          <span class="exp-time">2025 - 2026</span>
+        </div>
+        <div class="exp-role">产品经理</div>
+        <div class="exp-desc">
+          <ul>
+            <li>调研督导处日常听课、评课、反馈业务场景，梳理督导专家、教师、管理员等多角色流程。</li>
+            <li>完成督导系统原型设计与交互说明，对接开发实现，根据校方反馈多轮迭代调整。</li>
+            <li>主导系统测试与上线，输出操作手册并对督导人员进行专项培训。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">南充市域产教联合体 · 综合服务平台</span>
+          <span class="exp-time">2025 - 2026</span>
+        </div>
+        <div class="exp-role">产品经理</div>
+        <div class="exp-desc">
+          <ul>
+            <li>对接政府、院校、企业多方角色，调研市域产教联合体的资源对接、协作管理需求。</li>
+            <li>设计平台整体原型与核心功能模块，跟进开发实现，协调多方诉求进行方案调整。</li>
+            <li>参与测试验收，面向不同角色用户开展培训，保障平台顺利投入使用。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">天府粮仓 · 数字化管理平台</span>
+          <span class="exp-time">2025 - 2026</span>
+        </div>
+        <div class="exp-role">产品经理</div>
+        <div class="exp-desc">
+          <ul>
+            <li>深入农业与粮食业务场景开展需求调研，理解天府粮仓建设的管理与展示需求。</li>
+            <li>完成平台原型与数据可视化页面设计，对接开发团队落地实现。</li>
+            <li>与客户多轮沟通调整方案，负责测试把关与最终用户培训。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">四川数字商贸 · 数字化平台</span>
+          <span class="exp-time">2025 - 2026</span>
+        </div>
+        <div class="exp-role">产品经理</div>
+        <div class="exp-desc">
+          <ul>
+            <li>调研数字商贸领域业务需求，梳理平台功能框架与用户角色。</li>
+            <li>独立输出高保真原型与交互文档，对接开发实现，根据客户反馈迭代优化。</li>
+            <li>参与全流程测试，撰写操作手册并组织用户培训。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-name">西藏高原农牧业 · 数字化项目</span>
+          <span class="exp-time">2025 - 2026</span>
+        </div>
+        <div class="exp-role">产品经理</div>
+        <div class="exp-desc">
+          <ul>
+            <li>结合西藏高原农牧业特殊业务场景开展需求调研，远程与当地客户沟通确认方案。</li>
+            <li>完成产品原型设计与页面视觉，对接开发团队实现，根据现场反馈远程调整。</li>
+            <li>主导上线前测试，输出操作文档并通过远程方式开展用户培训。</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+</body>
+</html>
